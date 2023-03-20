@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char type,pType,option;
+    float amount;
+    int noOfChildren,addition;
+
+    option = 'y';
+
+	while (option != 'n' && option != 'N') {
+
+        if (option == 'y' || option =='Y') {
+
+            printf("\nInsurance Type : ");
+            scanf(" %c",&type);
+
+            if (type != 'A' && type != 'N' && type != 'D' && type != 'S' ) {
+                printf ("Invalid Insurance Type !");
+                break;
+            }
+
+            printf("Family or Individual ( F- family and I- individual) : ");
+            scanf(" %c",&pType);
+
+            if (pType == 'I') {
+
+                switch (type) {
+
+                    case 'A' :
+                        amount = 4500.00;
+                        break;
+                    case 'N' :
+                        amount = 3100.00;
+                        break;
+                    case 'D' :
+                        amount = 3600.00;
+                        break;
+                    case 'S' :
+                        amount = 3300.00;
+                        break;
+                    default :
+                        printf("Invalid Insurance Type");
+                }
+            }
+            else if (pType ==  'F') {
+
+                printf("Number of children : ");
+                scanf("%d",&noOfChildren);
+
+                addition = noOfChildren - 2;
+
+                if (addition < 0)
+                    addition = 0;
+
+                switch (type) {
+
+                    case 'A' :
+                        amount = 5200.00 + (5200.00*10/100*addition);
+                        break;
+                    case 'N' :
+                        amount = 4300.00 + (4300.00*10/100*addition);
+                        break;
+                    case 'D' :
+                        amount = 4800.00 + (4800.00*10/100*addition);
+                        break;
+                    case 'S' :
+                        amount = 3800.00 + (3800.00*10/100*addition);
+                        break;
+                    default :
+                        printf("Invalid Insurance Type");
+                }
+            }
+            printf("Total Amount : %.2f",amount);
+
+        }
+        printf("\n\nDo you want to continue : ");
+        scanf(" %c",&option);
+
+        }
+
+    return 0;
+}
